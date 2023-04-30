@@ -589,6 +589,7 @@ def show_info():
             print(f"{blue_color}{i} = {player2_village[i]}")
     input(f"{white_color}Нажмите Enter что бы подолжить.{white_color}")
 
+
 while 1:
     yes_or_no = input(f"{blue_color}Хотите загрузить последнее сохранение?\n1 - да\n2 - нет\n{white_color}")
     if yes_or_no == '2':
@@ -597,11 +598,25 @@ while 1:
         create_villages()
         break
     elif yes_or_no == '1':
-        with open('saves', 'r', encoding='utf-8') as f:
+        with open('saves.json', 'r', encoding='utf-8') as f:
             ac = json.load(f)
         size_field = ac['size_field']
-        field = ac['field']
-        now_turn = ac[now_turn]
+        create_field()
+        for i in range(size_field):
+            for j in range(size_field):
+                field[j][i].icon = ac['field'][i][j]['icon']
+                field[j][i].x = ac['field'][i][j]['x']
+                field[j][i].y = ac['field'][i][j]['y']
+                field[j][i].hp = ac['field'][i][j]['hp']
+                field[j][i].damage = ac['field'][i][j]['damage']
+                field[j][i].protection = ac['field'][i][j]['protection']
+                field[j][i].miss = ac['field'][i][j]['miss']
+                field[j][i].who = ac['field'][i][j]['who']
+                field[j][i].his = ac['field'][i][j]['his']
+        if ac['now_turn'] == 'player1':
+            now_turn = 'player2'
+        else:
+            now_turn = 'player1'
         player2_village = ac['player2_village']
         player1_village = ac['player1_village']
         break
