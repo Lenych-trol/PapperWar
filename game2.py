@@ -335,50 +335,60 @@ def create_object_person(it_x: int, y: int, icon: str, who: str):
                 player1_village["еды получает"] += 10
                 player1_village["люди"] -= 1
                 player1_village["получает денег"] -= 1
+                player1_village["тратит денег"] += 1
             elif icon == '$':
                 player1_village["получает денег"] += 2
                 player1_village["люди"] -= 1
-                player1_village["получает денег"] -= 1
+                player1_village["тратит денег"] += 1
             elif icon == '⌂':
                 player1_village["помысла получает"] += 10
                 player1_village["люди"] -= 1
                 player1_village["получает денег"] -= 1
+                player1_village["тратит денег"] += 1
             elif icon == '?':
                 player1_village["наука"] += 1
                 player1_village["люди"] -= 1
+                player1_village["тратит денег"] += 1
                 player1_village["получает денег"] -= 1
             elif icon == '▲':
                 player1_village["количество казарм"] += 1
                 player1_village["люди"] -= 1
+                player1_village["тратит денег"] += 1
                 player1_village["получает денег"] -= 1
             elif icon == '╖':
                 player1_village["количество защитных башен"] += 1
                 player1_village["люди"] -= 1
+                player1_village["тратит денег"] += 1
                 player1_village["получает денег"] -= 1
         elif who == 'player2':
             if icon == '▒':
                 player2_village["еды получает"] += 10
                 player2_village["люди"] -= 1
+                player2_village["тратит денег"] += 1
                 player2_village["получает денег"] -= 1
             elif icon == '$':
-                player2_village["получает денег"] += 2
+                player2_village["получает денег"] += 3
                 player2_village["люди"] -= 1
-                player2_village["получает денег"] -= 1
+                player2_village["тратит денег"] += 1
             elif icon == '⌂':
                 player2_village["помысла получает"] += 10
                 player2_village["люди"] -= 1
+                player2_village["тратит денег"] += 1
                 player2_village["получает денег"] -= 1
             elif icon == '?':
                 player2_village["наука"] += 1
                 player2_village["люди"] -= 1
+                player2_village["тратит денег"] += 1
                 player2_village["получает денег"] -= 1
             elif icon == '▲':
                 player2_village["количество казарм"] += 1
                 player2_village["люди"] -= 1
+                player2_village["тратит денег"] += 1
                 player2_village["получает денег"] -= 1
             elif icon == '╖':
                 player2_village["количество защитных башен"] += 1
                 player2_village["люди"] -= 1
+                player2_village["тратит денег"] += 1
                 player2_village["получает денег"] -= 1
     return True
 
