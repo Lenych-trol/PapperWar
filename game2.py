@@ -46,7 +46,6 @@ player2_village = {
     }
 names = ["Гоблины", "Викинги", "Эльфы", "Смурфики"]
 now_turn = 'player2'
-
 armi_persons = {
     "›": {
         "hp": {"1": 2, "2": 4, "3": 4, "4": 6, "5": 6, "6": 10},
@@ -523,26 +522,36 @@ def use_unin():
                         elif a == '3':
                             for k in range(x - 1, x + 2):
                                 for l in range(y - 1, y + 2):
-                                    if field[l][k].icon == '▲' and field[l][k].who == now_turn:
-                                        if now_turn == 'player1':
-                                            field[y][x].hp = armi_persons[field[y][x].icon]['hp'][
-                                                str(player1_village['наука'])]
-                                            field[y][x].damage = armi_persons[field[y][x].icon]['damage'][
-                                                str(player1_village['наука'])]
-                                            field[y][x].protection = armi_persons[field[y][x].icon]['protection'][
-                                                str(player1_village['наука'])]
-                                            field[y][x].miss = armi_persons[field[y][x].icon]['уклонение'][
-                                                str(player1_village['наука'])]
-                                        elif now_turn == 'player2':
-                                            field[y][x].hp = armi_persons[field[y][x].icon]['hp'][
-                                                str(player2_village['наука'])]
-                                            field[y][x].damage = armi_persons[field[y][x].icon]['damage'][
-                                                str(player2_village['наука'])]
-                                            field[y][x].protection = armi_persons[field[y][x].icon]['protection'][
-                                                str(player2_village['наука'])]
-                                            field[y][x].miss = armi_persons[field[y][x].icon]['уклонение'][
-                                                str(player2_village['наука'])]
-                                        return True
+                                    if size_field > k >= 0 and size_field > l >= 0:
+                                        if field[l][k].icon == '▲' and field[l][k].who == now_turn:
+                                            if now_turn == 'player1':
+                                                try:
+                                                    field[y][x].hp = armi_persons[field[y][x].icon]['hp'][
+                                                        str(player1_village['наука'])]
+                                                    field[y][x].damage = armi_persons[field[y][x].icon]['damage'][
+                                                        str(player1_village['наука'])]
+                                                    field[y][x].protection = armi_persons[field[y][x].icon]['protection'][
+                                                        str(player1_village['наука'])]
+                                                    field[y][x].miss = armi_persons[field[y][x].icon]['уклонение'][
+                                                        str(player1_village['наука'])]
+                                                    return True
+                                                except KeyError:
+                                                    print(f"{red_color}У вас нет лабораторий.{white_color}")
+                                                    return False
+                                            elif now_turn == 'player2':
+                                                try:
+                                                    field[y][x].hp = armi_persons[field[y][x].icon]['hp'][
+                                                        str(player2_village['наука'])]
+                                                    field[y][x].damage = armi_persons[field[y][x].icon]['damage'][
+                                                        str(player2_village['наука'])]
+                                                    field[y][x].protection = armi_persons[field[y][x].icon]['protection'][
+                                                        str(player2_village['наука'])]
+                                                    field[y][x].miss = armi_persons[field[y][x].icon]['уклонение'][
+                                                        str(player2_village['наука'])]
+                                                    return True
+                                                except KeyError:
+                                                    print(f"{red_color}У вас нет лабораторий.{white_color}")
+                                                    return False
                             print(f"{red_color}Казарма слишком далеко...{white_color}")
                             time.sleep(2)
                             return False
